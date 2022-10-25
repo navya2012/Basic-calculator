@@ -3,12 +3,24 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import "../node_modules/bootstrap/dist/js/bootstrap.min.js";
+import { Provider } from 'react-redux';
+import mystore from './components/Redux/Store';
+import { PersistGate } from 'redux-persist/integration/react';
+import { persistor } from './components/Redux/Store';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    <Provider store={mystore}>
+      <PersistGate persistor={persistor}>
     <App />
+    </PersistGate> 
+  </Provider>
   </React.StrictMode>
+  
 );
 
 // If you want to start measuring performance in your app, pass a function
